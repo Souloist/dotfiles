@@ -5,7 +5,8 @@ filetype plugin indent on
 
 " color scheme
 set t_Co=256
-colorscheme brogrammer
+let g:solarized_termcolors=256
+colorscheme solarized
 set background=dark
 
 " backupcopy
@@ -70,23 +71,23 @@ autocmd InsertLeave * match OverLength /\%81v.\+/
 autocmd BufWinLeave * call clearmatches()
 
 " Syntastic Settings
-"set statusline+=%#warningmsg#
-"set statusline+=%{SyntasticStatuslineFlag()}
-"set statusline+=%*
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
 
-"let g:syntastic_warning_symbol = "⚠"
-"let g:syntastic_aggregate_errors= 1
-"let g:syntastic_disabled_filetypes=['mako', 'js', 'css']
-"let g:syntastic_always_populate_loc_list = 1
-"let g:syntastic_auto_loc_list = 1
-"let g:syntastic_check_on_wq = 0
-"let g:syntastic_quiet_messages= { "regex": ["E131", "E126", "W391", "E501"] } 
+let g:syntastic_warning_symbol = "⚠"
+let g:syntastic_aggregate_errors= 1
+let g:syntastic_disabled_filetypes=['mako', 'js', 'css']
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_quiet_messages= { "regex": ["E131", "E126", "W391", "E501"] } 
 
 " Flake8 
-"let g:syntastic_python_checkers = ['flake8', 'pyflakes', 'pylint']
+let g:syntastic_python_checkers = ['flake8', 'pyflakes', 'pylint']
 
 " ESLint
-"let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_javascript_checkers = ['eslint']
 
 " Viminfo
 set viminfo='20,\"100
