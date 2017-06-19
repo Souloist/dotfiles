@@ -7,6 +7,9 @@ filetype plugin indent on
 set t_Co=256
 set background=dark
 
+" Backspace fixes
+set backspace=indent,eol,start
+
 " backupcopy
 set backupcopy=yes
 
@@ -74,10 +77,10 @@ let g:syntastic_disabled_filetypes=['mako', 'js', 'css']
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_wq = 0
-let g:syntastic_quiet_messages= { "regex": ["E131", "E126", "W391", "E501"] }
+let g:syntastic_quiet_messages= { "regex": ["E131", "E126", "W391", "E501", "W503"] }
 
 " Flake8 
-let g:syntastic_python_checkers = ['flake8', 'pyflakes', 'pylint'] 
+let g:syntastic_python_checkers = ['flake8', 'pyflakes']
  
 " ESLint 
 let g:syntastic_javascript_checkers = ['eslint'] 
