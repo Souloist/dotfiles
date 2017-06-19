@@ -48,6 +48,7 @@ au BufRead,BufWrite *.jsx :%s/\s\+$//e
 au BufRead,BufWrite *.sass :%s/\s\+$//e
 au BufRead,BufWrite *.yaml :%s/\s\+$//e
 au BufRead,BufWrite *.sh :%s/\s\+$//e
+au BufRead,BufWrite *.ini :%s/\s\+$//e
 
 " pep-8 compliance
 au FileType python match ErrorMsg '\%>79v.\+'
@@ -86,6 +87,8 @@ set clipboard=unnamed
 
 " NERDTree
 let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
+let mapleader = ","
+nnoremap <Leader>f :NERDTreeToggle<cr>
 
 " Vim-airline
 let g:airline#extensions#branch#use_vcscommand = 1 " show mercurial branch
