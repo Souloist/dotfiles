@@ -80,7 +80,7 @@ let g:syntastic_check_on_wq = 0
 let g:syntastic_quiet_messages= { "regex": ["E131", "E126", "W391", "E501", "W503"] }
 
 " Flake8 
-let g:syntastic_python_checkers = ['flake8', 'pyflakes']
+let g:syntastic_python_checkers = ['flake8']
  
 " ESLint 
 let g:syntastic_javascript_checkers = ['eslint'] 
@@ -88,10 +88,10 @@ let g:syntastic_javascript_checkers = ['eslint']
 " Copy 
 set clipboard=unnamed
 
-" NERDTree
-let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
+" CtrlP
+set runtimepath^=~/.vim/bundle/ctrlp.vim
 let mapleader = ","
-nnoremap <Leader>f :NERDTreeToggle<cr>
+nnoremap <Leader>f :CtrlP<cr>
 
 " Vim-airline
 let g:airline#extensions#branch#use_vcscommand = 1 " show mercurial branch

@@ -1,28 +1,10 @@
-source ~/.bashrc
-
-#  ---------------------------------------------------------------------------
-#
 #  Description:  This file holds all my BASH configurations and aliases
-#
-#  Sections:
-#  1.  Environment Configuration
-#  2.  Make Terminal Better (remapping defaults and adding functionality)
-#  3.  File and Folder Management
-#  4.  Searching
-#  5.  Process Management
-#  6.  Networking
-#  7.  System Operations & Information
-#  8.  Web Development
-#  9.  Reminders & Notes
-#
-#  ---------------------------------------------------------------------------
+
+source ~/.bashrc
 
 #   -------------------------------
 #   1. ENVIRONMENT CONFIGURATION
 #   -------------------------------
-
-#   Change Prompt
-#   ------------------------------------------------------------
 
 #   Set Paths
 #   ------------------------------------------------------------
@@ -38,14 +20,6 @@ source ~/.bashrc
 #   ------------------------------------------------------------
     export BLOCKSIZE=1k
 
-#   Add color to terminal
-#   (this is all commented out as I use Mac Terminal Profiles)
-#   from http://osxdaily.com/2012/02/21/add-color-to-the-terminal-in-mac-os-x/
-#   ------------------------------------------------------------
-#   export CLICOLOR=1
-#   export LSCOLORS=ExFxBxDxCxegedabagacad
-
-
 #   -----------------------------
 #   2. MAKE TERMINAL BETTER
 #   -----------------------------
@@ -55,7 +29,6 @@ alias mv='mv -iv'                           # Preferred 'mv' implementation
 alias mkdir='mkdir -pv'                     # Preferred 'mkdir' implementation
 alias ll='ls -FGlAhp'                       # Preferred 'ls' implementation
 alias less='less -FSRXc'                    # Preferred 'less' implementation
-cd() { builtin cd "$@"; ll; }               # Always list directory contents upon 'cd'
 alias cd..='cd ../'                         # Go back 1 directory level (for fast typers)
 alias ..='cd ../'                           # Go back 1 directory level
 alias ...='cd ../../'                       # Go back 2 directory levels
@@ -250,21 +223,11 @@ alias mountReadWrite='/sbin/mount -uw /'    # mountReadWrite:   For use when boo
 #   -----------------------------------------------------------------------------------
     alias screensaverDesktop='/System/Library/Frameworks/ScreenSaver.framework/Resources/ScreenSaverEngine.app/Contents/MacOS/ScreenSaverEngine -background'
 
-#   ---------------------------------------
-#   8. WEB DEVELOPMENT
-#   ---------------------------------------
-
-alias apacheEdit='sudo edit /etc/httpd/httpd.conf'      # apacheEdit:       Edit httpd.conf
-alias apacheRestart='sudo apachectl graceful'           # apacheRestart:    Restart Apache
-alias editHosts='sudo edit /etc/hosts'                  # editHosts:        Edit /etc/hosts file
-alias herr='tail /var/log/httpd/error_log'              # herr:             Tails HTTP error logs
-alias apacheLogs="less +F /var/log/apache2/error_log"   # Apachelogs:   Shows apache error logs
-httpHeaders () { /usr/bin/curl -I -L $@ ; }             # httpHeaders:      Grabs headers from web page
-
-#   httpDebug:  Download a web page and show info on what took time
-#   -------------------------------------------------------------------
-    httpDebug () { /usr/bin/curl $@ -o /dev/null -w "dns: %{time_namelookup} connect: %{time_connect} pretransfer: %{time_pretransfer} starttransfer: %{time_starttransfer} total: %{time_total}\n" ; }
-
 #   9. KEYCHAIN
 #   --------------------------------------
 eval `keychain --eval --agents ssh id_rsa`
+
+# Setting PATH for Python 3.4
+# The orginal version is saved in .bash_profile.pysave
+PATH="/Library/Frameworks/Python.framework/Versions/3.4/bin:${PATH}"
+export PATH
