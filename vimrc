@@ -1,8 +1,24 @@
 filetype plugin indent on
 
+call plug#begin()
+Plug 'sheerun/vim-polyglot'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'ekalinin/Dockerfile.vim'
+Plug 'w0rp/ale'
+Plug 'alfredodeza/coveragepy.vim'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'tpope/vim-commentary'
+Plug 'ludovicchabant/vim-lawrencium'
+Plug 'kristijanhusak/vim-hybrid-material'
+call plug#end()
+
 " color scheme
 set t_Co=256
+syntax on
 set background=dark
+let g:enable_bold_font = 1
+colorscheme hybrid_material
 
 " Backspace fixes
 set backspace=indent,eol,start
@@ -15,7 +31,6 @@ set encoding=utf-8
 
 " tab settings
 set shiftwidth=4 softtabstop=4 expandtab tabstop=8 smarttab
-syntax on
 
 " Set fold off at start
 set foldlevelstart=10
@@ -23,7 +38,7 @@ set foldlevelstart=10
 " indentation settings
 set ai "Auto indent
 set si "Smart indent
-set nu
+set number
 
 " status line
 set laststatus=2                        " status line always visible
@@ -38,7 +53,13 @@ map <F9> O<Esc>
 
 " search options
 set hlsearch
+set incsearch
 set ignorecase
+set smartcase
+map <CR> :nohl<cr>
+
+" cursor
+set cursorline
 
 " replace trailing whitespace
 au BufRead *.cfg retab
@@ -75,9 +96,9 @@ let g:ale_lint_on_enter = 0
 let g:ale_open_list = 1
 let g:ale_python_flake8_args = '--ignore=E131,E126,W391,E501,W503'
 let g:ale_linters = { 'python': ['flake8'], 'javascript': ['eslint']}
-let g:ale_fix_on_save = 1
+let g:ale_warn_about_trailing_whitespace = 0
 let g:ale_completion_enabled = 1
-let g:ale_lint_on_text_changed = 'never'
+let g:ale_lint_on_text_changed = 'insert'
 
 " Copy 
 set clipboard=unnamed
@@ -89,39 +110,10 @@ nnoremap <Leader>f :CtrlP<cr>
 " Vim-airline
 let g:airline#extensions#branch#use_vcscommand = 1 " show mercurial branch
 let g:airline#extensions#ale#enabled = 1 " ALE error status bar
+let g:airline_theme = "hybrid"
 
 " Viminfo
 set viminfo='20,\"100
-
-" Python-mode
-let g:pymode_options_colorcolumn = 0
-let g:pymode_lint = 0
-let g:pymode_rope = 0
-let g:pymode_rope_lookup_project = 0
-let g:pymode_rope_complete_on_dot = 0
-let g:pymode_rope_autoimport = 0
-
-" Enhanced python highlighting
-hi pythonLambdaExpr      ctermfg=105 guifg=#8787ff
-hi pythonInclude         ctermfg=68  guifg=#5f87d7 cterm=bold gui=bold
-hi pythonClass           ctermfg=167 guifg=#FF62B0 cterm=bold gui=bold
-hi pythonParameters      ctermfg=147 guifg=#AAAAFF
-hi pythonParam           ctermfg=175 guifg=#E37795
-hi pythonBrackets        ctermfg=183 guifg=#d7afff
-hi pythonClassParameters ctermfg=111 guifg=#FF5353
-hi pythonSelf            ctermfg=68  guifg=#5f87d7 cterm=bold gui=bold
-
-hi pythonDottedName      ctermfg=74  guifg=#5fafd7
-
-hi pythonError           ctermfg=196 guifg=#ff0000
-hi pythonIndentError     ctermfg=197 guifg=#ff005f
-hi pythonSpaceError      ctermfg=198 guifg=#ff0087
-
-hi pythonBuiltinType     ctermfg=74  guifg=#9191FF
-hi pythonBuiltinObj      ctermfg=71  guifg=#5faf5f
-hi pythonBuiltinFunc     ctermfg=169 guifg=#d75faf cterm=bold gui=bold
-
-hi pythonException       ctermfg=207 guifg=#CC3366 cterm=bold gui=bold
 
 packloadall
 silent! helptags ALL
