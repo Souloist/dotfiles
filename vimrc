@@ -66,25 +66,19 @@ autocmd InsertEnter * match OverLength /\%81v.\+/
 autocmd InsertLeave * match OverLength /\%81v.\+/
 autocmd BufWinLeave * call clearmatches()
 
-" Syntastic Settings
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+" Ale
+let g:ale_set_loclist = 0
+let g:ale_set_quickfix = 1
+let g:ale_set_highlights = 1
+let g:ale_sign_warning = '⚠'
+let g:ale_lint_on_enter = 0
+let g:ale_open_list = 1
+let g:ale_python_flake8_args = '--ignore=E131,E126,W391,E501,W503'
+let g:ale_linters = { 'python': ['flake8'], 'javascript': ['eslint']}
+let g:ale_fix_on_save = 1
+let g:ale_completion_enabled = 1
+let g:ale_lint_on_text_changed = 'never'
 
-let g:syntastic_warning_symbol = "⚠"
-let g:syntastic_aggregate_errors= 1
-let g:syntastic_disabled_filetypes=['mako', 'js', 'css']
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_quiet_messages= { "regex": ["E131", "E126", "W391", "E501", "W503"] }
-
-" Flake8 
-let g:syntastic_python_checkers = ['flake8']
- 
-" ESLint 
-let g:syntastic_javascript_checkers = ['eslint'] 
-     
 " Copy 
 set clipboard=unnamed
 
@@ -94,6 +88,7 @@ nnoremap <Leader>f :CtrlP<cr>
 
 " Vim-airline
 let g:airline#extensions#branch#use_vcscommand = 1 " show mercurial branch
+let g:airline#extensions#ale#enabled = 1 " ALE error status bar
 
 " Viminfo
 set viminfo='20,\"100
@@ -127,3 +122,6 @@ hi pythonBuiltinObj      ctermfg=71  guifg=#5faf5f
 hi pythonBuiltinFunc     ctermfg=169 guifg=#d75faf cterm=bold gui=bold
 
 hi pythonException       ctermfg=207 guifg=#CC3366 cterm=bold gui=bold
+
+packloadall
+silent! helptags ALL
