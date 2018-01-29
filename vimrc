@@ -1,6 +1,3 @@
-" pathogen
-execute pathogen#infect()
-syntax enable
 filetype plugin indent on
 
 " color scheme
@@ -31,6 +28,9 @@ set nu
 " status line
 set laststatus=2                        " status line always visible
 set noshowmode
+
+" use jk instead of esc
+:imap jk <Esc>
 
 " insert newline below/above without entering insert mode
 map <F8> o<Esc>
@@ -89,7 +89,6 @@ let g:syntastic_javascript_checkers = ['eslint']
 set clipboard=unnamed
 
 " CtrlP
-set runtimepath^=~/.vim/bundle/ctrlp.vim
 let mapleader = ","
 nnoremap <Leader>f :CtrlP<cr>
 
