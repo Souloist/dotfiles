@@ -7,17 +7,18 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'w0rp/ale'
 Plug 'alfredodeza/coveragepy.vim'
-Plug 'ctrlpvim/ctrlp.vim'
 Plug 'tpope/vim-commentary'
 Plug 'ludovicchabant/vim-lawrencium'
 Plug 'kristijanhusak/vim-hybrid-material'
+Plug 'wincent/command-t'
+Plug 'vim-scripts/SQLUtilities'
+Plug 'vim-scripts/Align'
 call plug#end()
 
 " color scheme
 set t_Co=256
 syntax on
 set background=dark
-let g:enable_bold_font = 1
 colorscheme hybrid_material
 
 " Backspace fixes
@@ -38,7 +39,7 @@ set foldlevelstart=10
 " indentation settings
 set ai "Auto indent
 set si "Smart indent
-set number
+set number relativenumber
 
 " status line
 set laststatus=2                        " status line always visible
@@ -103,9 +104,9 @@ let g:ale_lint_on_text_changed = 'insert'
 " Copy 
 set clipboard=unnamed
 
-" CtrlP
+" CommandT
 let mapleader = ","
-nnoremap <Leader>f :CtrlP<cr>
+nnoremap <Leader>f :CommandT<cr>
 
 " Vim-airline
 let g:airline#extensions#branch#use_vcscommand = 1 " show mercurial branch
