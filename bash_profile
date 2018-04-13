@@ -226,3 +226,49 @@ start_db() {
     -c synchronous_commit=off
     -c full_page_writes=off
 }
+
+vv() {
+    if [ -n "$VIRTUAL_ENV" ]; then
+        echo "warning: deactivating existing virtualenv"
+        deactivate
+    fi
+
+    dir=$(pwd)
+
+    while [ "$dir" != "/" ]; do
+        if [ -d "$dir/venv" ]; then
+            . $dir/venv/bin/activate
+            return 0
+        fi
+        dir=$(dirname $dir)
+    done
+
+    echo "error: virtualenv not found"
+    return 1
+}
+
+mkvv() {
+    python_path="python"
+    target_path="venv"
+
+    # Check if we're trying to use python 3 mode.
+    if [ "$1" == "-3" ]; then
+        shift
+        python_path=$(which python3)
+        if [ -z "$python_path" ]; then
+            echo "python3 not in PATH"
+            return
+        fi
+    fi
+
+    # If a path is provided, install the venv there instead, otherwise
+    # recurse up until we can find a setup.py.
+    if [ -n "$1" ]; then
+        target_path=$1
+    fi
+
+    virtualenv --quiet --clear --python="$python_path" "$target_path"
+    . "$target_path/bin/activate"
+    pip install --quiet --upgrade pip
+    pip install --quiet wheel
+}
