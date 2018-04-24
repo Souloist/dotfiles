@@ -8,7 +8,7 @@ Plug 'ekalinin/Dockerfile.vim'
 Plug 'w0rp/ale'
 Plug 'alfredodeza/coveragepy.vim'
 Plug 'tpope/vim-commentary'
-Plug 'ludovicchabant/vim-lawrencium'
+Plug 'tpope/vim-fugitive'
 Plug 'kristijanhusak/vim-hybrid-material'
 Plug 'wincent/command-t'
 Plug 'vim-scripts/SQLUtilities'
@@ -109,7 +109,7 @@ let mapleader = ","
 nnoremap <Leader>f :CommandT<cr>
 
 " Vim-airline
-let g:airline#extensions#branch#use_vcscommand = 1 " show mercurial branch
+let g:airline#extensions#branch#enabled = 1 " Show git branch
 let g:airline#extensions#ale#enabled = 1 " ALE error status bar
 let g:airline_theme = "hybrid"
 
