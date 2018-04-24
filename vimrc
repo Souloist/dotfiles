@@ -82,10 +82,10 @@ au BufRead,BufWrite *.py :%s/\s\+$//e
 
 " Highlight long lines
 highlight OverLength ctermbg=red ctermfg=white guibg=#592929
-match OverLength /\%81v.\+/
-autocmd BufWinEnter * match OverLength /\%81v.\+/
-autocmd InsertEnter * match OverLength /\%81v.\+/
-autocmd InsertLeave * match OverLength /\%81v.\+/
+match OverLength /\%120v.\+/
+autocmd BufWinEnter * match OverLength /\%120v.\+/
+autocmd InsertEnter * match OverLength /\%120v.\+/
+autocmd InsertLeave * match OverLength /\%120v.\+/
 autocmd BufWinLeave * call clearmatches()
 
 " Ale
