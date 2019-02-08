@@ -96,13 +96,13 @@ let g:ale_sign_warning = '⚠'
 let g:ale_lint_on_enter = 0
 let g:ale_open_list = 1
 let g:ale_python_flake8_args = '--ignore=E131,E126,W391,E501,W503'
-let g:ale_linters = { 'python': ['flake8'], 'javascript': ['eslint']}
+let g:ale_linters = { 'python': ['flake8'], 'javascript': ['eslint'], 'rust': ['rustc'] }
 let g:ale_warn_about_trailing_whitespace = 0
 let g:ale_completion_enabled = 1
 let g:ale_lint_on_text_changed = 'insert'
 
 " Copy 
-set clipboard=unnamed
+set clipboard=unnamedplus
 
 " CommandT
 let mapleader = ","
