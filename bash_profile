@@ -272,3 +272,27 @@ mkvv() {
     pip install --quiet --upgrade pip
     pip install --quiet wheel
 }
+
+
+set-prod-aerosmith() {
+    export KUBECONFIG=${HOME}/.kube/config-aerosmith
+}
+
+set-dev-nsync() {
+    export KUBECONFIG=${HOME}/.kube/config-nsync
+}
+
+refresh-grpc() {
+    docker exec -it web-app_grpc_1 pkill kubepfm
+}
+export AWS_ACCESS_KEY_ID="$(aws configure get default.aws_access_key_id)"
+export AWS_SECRET_ACCESS_KEY="$(aws configure get default.aws_secret_access_key)"
+
+export GOPATH=$HOME/go
+export PATH=$GOPATH/bin:$PATH
+export VAULT_ADDR=https://vault.giphy.tech
+alias docker-purge-containers='docker rm $(docker ps -a -f status=exited -q)'
+alias database-prod='psql "$(credstash -t=bouncer-prod get DATABASE_URL)"'
+alias database-dev='psql "$(credstash -t=bouncer-prod get DATABASE_URL)"'
+alias database-local='docker exec -it bouncer_postgres_1 psql -U postgres'
+
